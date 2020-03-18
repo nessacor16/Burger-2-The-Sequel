@@ -1,0 +1,58 @@
+
+<div id="floating-content">
+    <h1 class="text-center text-white"><i class="fas fa-hamburger"></i>&nbsp; B U R G E R</h1>
+
+    <div class="form-container">
+
+        <div class="burger-box burgers-ready">
+            <h5>Ready <span class="ready-count"></span></h5>
+            <ol>
+                {{#each burgers}}
+                    {{#unless devoured}}
+                    <li>{{burger_name}} <span>Ordered by {{Customer.customer_name}}</span> <a href="#" class="devour" data-id="{{id}}">Devour</a></li>
+                    {{/unless}}
+                {{/each}}
+            </ol>
+            <p>Sorted Alphabetically</p>
+        </div>
+
+        <div class="burger-box burgers-devoured">
+            <h5>Devoured <span class="devoured-count"></span></h5>
+             <ol>
+                {{#each burgers}}
+                    {{#if devoured}}
+                    <li>{{burger_name}} <span>Eaten by {{Customer.customer_name}}</span></li>
+                    {{/if}}
+                {{/each}}
+            </ol>
+            <p>Sorted Alphabetically</p>
+        </div>
+       
+       <div class="form-content">
+           <form class="add-customer-form">
+                <div class="form-group">
+                    <label for="ca"><i class="fas fa-user"></i>&nbsp; Add Customer:</label>
+                    <input type="text" id="customer_name" name="customer_name" placeholder="Customer Name">
+                </div>
+                <button type="submit">Add Customer</button>
+            </form>
+            <br clear="all"><br>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="ca"><i class="fas fa-hamburger"></i>&nbsp; Add Custom Burger:</label>
+                    <input type="text" id="burger_name" name="burger_name" placeholder="Burger Name">
+                    <label>Select Customer</label>
+                    <select id="customer" class="customer">
+                        <option value="">- Select Customer -</option>
+                    {{#each users}}
+                        <option value="{{id}}">{{customer_name}}</option>
+                    {{/each}}
+                    </select>
+                </div>
+                <br clear="all"><br>
+                <button type="submit">Add Burger</button>
+            </form>
+       </div>
+        
+    </div>
+</div>
